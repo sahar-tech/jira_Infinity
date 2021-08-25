@@ -81,7 +81,7 @@ public class paymentControllers {
 
     @GetMapping(value = CANCEL_URL_PP)
     public String cancelPayPal() {
-        return CANCEL_URL_PP;
+        return "cancel";
     }
 
     @GetMapping(value = SUCCESS_URL_PP)
@@ -90,7 +90,7 @@ public class paymentControllers {
             com.paypal.api.payments.Payment payment = paypalService.executePayment(paymentId, payerId);
             System.out.println(payment.toJSON());
             if (payment.getState().equals("approved")) {
-                return SUCCESS_URL_PP;
+                return "success";
             }
         } catch (PayPalRESTException e) {
             System.out.println(e.getMessage());
@@ -183,11 +183,11 @@ public class paymentControllers {
     }
 
     @GetMapping(value = SUCCESS_URL)
-    public String successPayDH(@RequestParam("paymentId") String paymentId, @RequestParam("PayerID") String payerId) { return SUCCESS_URL; }
+    public String successPayDH(@RequestParam("paymentId") String paymentId, @RequestParam("PayerID") String payerId) { return "success"; }
 
     @GetMapping(value = CANCEL_URL)
     public String cancelPayDH() {
-        return CANCEL_URL;
+        return "cancel";
     }
 
 }

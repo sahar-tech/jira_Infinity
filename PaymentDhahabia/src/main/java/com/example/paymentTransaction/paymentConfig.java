@@ -52,7 +52,7 @@ public class paymentConfig {
         return context;
     }
 
-    @Bean
+  //  @Bean
     public Connection connectDB() throws ClassNotFoundException, SQLException {
 
         Connection con = null;
